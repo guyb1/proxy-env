@@ -15,7 +15,11 @@ openssl req -nodes -new -x509 -out ca.crt -keyout ca.key -config req.conf -exten
 ```
 docker-compose build && docker-compose up
 ```
-3. Run `docker exec -it CONTAINER_ID bash` to enter the client container. The container has no internet connection, unless you use the proxy.
+3. In order to enter the client container, run:
+```
+docker exec -it CLIENT_CONTAINER_ID sh
+```
+The container has no internet connection, unless you use the proxy.
 4. Now, in order to use the proxy, the http proxy address is `http://proxy:8080` and the https proxy address is `https://proxy:443`. For example, if you want to access google.com, you can run the command:
 ```
 curl --proxy http://proxy:8080 https://google.com

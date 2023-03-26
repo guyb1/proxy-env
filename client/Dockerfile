@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:experimental
-FROM aquasec/aqua-scanner:v0.124.3-test-11
+FROM aquasec/aqua-scanner:latest
 
 RUN mkdir /var/certs
 ADD common/ca.crt /var/certs/

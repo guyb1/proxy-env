@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  proxy:
+    build:
+      dockerfile: ./proxy-server/Dockerfile
+    ports:
+      - "443:443"
+      - "8080:8080"
+    hostname: proxy
+    networks:
+      - internet
+      - no-internet
+
+  client:
+    build:
+      dockerfile: ./client/Dockerfile
+    depends_on:
+      - proxy
+    hostname: client
+    networks:
+      - no-internet
+
+networks:
+  internet: {}
+  no-internet:
+    internal: true
